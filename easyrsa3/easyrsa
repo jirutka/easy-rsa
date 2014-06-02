@@ -447,8 +447,7 @@ current CA keypair. If you intended to start a new CA, run init-pki first."
 	printf "" > "$EASYRSA_PKI/index.txt" || die "$err_file"
 	print "01" > "$EASYRSA_PKI/serial" || die "$err_file"
 
-	# Default CN only when not in global EASYRSA_BATCH mode:
-	[ $EASYRSA_BATCH ] && opts="$opts -batch" || export EASYRSA_REQ_CN="Easy-RSA CA"
+	[ $EASYRSA_BATCH ] && opts="$opts -batch"
 
 	out_key_tmp="$(mktemp -u "$out_key.XXXXXXXXXX")"; EASYRSA_TEMP_FILE_2="$out_key_tmp"
 	out_file_tmp="$(mktemp -u "$out_file.XXXXXXXXXX")"; EASYRSA_TEMP_FILE_3="$out_file_tmp"
